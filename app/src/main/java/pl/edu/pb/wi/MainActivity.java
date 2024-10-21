@@ -20,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView questionTextView;
 
     private int currentIndex = 0;
+    private int countCorrectAnswer = 0;
+    private boolean quizFinish = false;
 
     private Question[] questions = new Question[] {
             new Question(R.string.q_activity,  true),
@@ -34,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         int resultMessageId = 0;
         if (userAnswer == correctAnswer){
             resultMessageId = R.string.correct_answer;
+            countCorrectAnswer++;
         }else {
             resultMessageId = R.string.incorrect_answer;
         }
@@ -42,7 +45,21 @@ public class MainActivity extends AppCompatActivity {
 
     private void setNextQuestion()
     {
-        questionTextView.setText(questions[currentIndex].getQuestionId());
+        if (quizFinish)
+        {
+            quizFinish = true;
+            String resultMessage = "Poprawne odpowiedzi: " + countCorrectAnswer + " na " + questions.length;
+            Toast.makeText(this, resultMessage, Toast.LENGTH_LONG).show();
+            currentIndex = 0;
+            countCorrectAnswer = 0;
+            quizFinish = false;
+            setNextQuestion();
+        }
+        else
+        {
+            questionTextView.setText(questions[currentIndex].getQuestionId());
+        }
+
     }
 
     @Override
@@ -59,20 +76,29 @@ public class MainActivity extends AppCompatActivity {
         trueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                checkAnswerCorrectness(true);
+                if (!quizFinish) {
+                    checkAnswerCorrectness(true);
+                }
             }
         });
         falseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                checkAnswerCorrectness(false);
+                if (!quizFinish) {
+                    checkAnswerCorrectness(false);
+                }
             }
         });
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                currentIndex = (currentIndex + 1)%questions.length;
-                setNextQuestion();
+                if (!quizFinish) {
+                    currentIndex++;
+                    if (currentIndex >= questions.length){
+                        quizFinish = true;
+                    }
+                    setNextQuestion();
+                }
             }
         });
         setNextQuestion();
