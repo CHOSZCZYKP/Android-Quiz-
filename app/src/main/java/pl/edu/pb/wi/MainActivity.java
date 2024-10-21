@@ -79,6 +79,8 @@ public class MainActivity extends AppCompatActivity {
                 if (!quizFinish) {
                     checkAnswerCorrectness(true);
                 }
+                trueButton.setEnabled(false);
+                falseButton.setEnabled(false);
             }
         });
         falseButton.setOnClickListener(new View.OnClickListener() {
@@ -87,6 +89,8 @@ public class MainActivity extends AppCompatActivity {
                 if (!quizFinish) {
                     checkAnswerCorrectness(false);
                 }
+                trueButton.setEnabled(false);
+                falseButton.setEnabled(false);
             }
         });
         nextButton.setOnClickListener(new View.OnClickListener() {
@@ -97,6 +101,8 @@ public class MainActivity extends AppCompatActivity {
                     if (currentIndex >= questions.length){
                         quizFinish = true;
                     }
+                    trueButton.setEnabled(true);
+                    falseButton.setEnabled(true);
                     setNextQuestion();
                 }
             }
