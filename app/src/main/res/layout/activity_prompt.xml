@@ -5,15 +5,15 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    android:gravity="center"
     android:orientation="vertical"
-    android:gravity="center">
+    tools:context=".PromptActivity">
 
     <TextView
-        android:id="@+id/question_text_view"
+        android:id="@+id/pytanie_potwierdzajace_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
+        android:text="Czy na pewno chcesz zobaczyć odpowiedź?"
         android:padding="30dp"/>
 
     <LinearLayout
@@ -22,30 +22,18 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/true_button"
+            android:id="@+id/pokaz_podpowiedz_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/button_true"/>
-
-        <Button
-            android:id="@+id/false_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/button_false" />
-
+            android:layout_weight="1"
+            android:text="@string/button_pokaz_podpowiedz" />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/next_button"
+    <TextView
+        android:id="@+id/answer_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/button_next" />
-
-    <Button
-
-        android:id="@+id/podpowiedz_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/button_podpowiedz" />
+        android:padding="30dp"
+        tools:text="Odpowiedź"/>
 
 </LinearLayout>

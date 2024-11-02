@@ -12,4 +12,8 @@
 
     <string name="correct_answer">Dobrze</string>
     <string name="incorrect_answer">Źle</string>
+
+    <string name="button_pokaz_podpowiedz">Pokaż podpowiedź</string>
+    <string name="button_podpowiedz">Podpowiedź</string>
+    <string name="answer_was_shown">Oszukujesz! Odpowiedź była już wyświetlona.</string>
 </resources>
